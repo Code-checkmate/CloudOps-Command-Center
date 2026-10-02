@@ -1,0 +1,1196 @@
+Build a production-quality, portfolio-grade internal DevOps/CloudOps platform called **CloudOps Command Center**.
+
+IMPORTANT:
+
+* I want the COMPLETE SOURCE CODE.
+* Do NOT deploy, host, publish, or provision the application.
+* Do NOT create or modify AWS resources.
+* Do NOT require AWS credentials.
+* The application must run locally from the generated source code.
+* Use realistic mock/demo data through a clean data-provider/service layer.
+* Architect the application so mock providers can later be replaced by real AWS, Jenkins, GitHub, Prometheus, CloudWatch, Docker and other APIs without rewriting the frontend.
+* Do not build a generic monitoring dashboard.
+* The goal is to demonstrate advanced DevOps/CloudOps engineering concepts in a portfolio project.
+
+PROJECT NAME:
+CloudOps Command Center
+
+CORE IDEA:
+Create a centralized internal engineering platform where DevOps engineers can understand application health, deployments, infrastructure, incidents, environments, service ownership, dependencies, cloud costs and operational risks from one interface.
+
+TECHNOLOGY:
+Use:
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* shadcn/ui or another professional component system
+* Recharts or another suitable charting library
+* Lucide icons
+* React Router
+* TanStack Query where appropriate
+* A lightweight Node/Express API only if necessary for the mock backend
+* Modular architecture
+* Strong TypeScript typing
+* No unnecessary dependencies
+
+DESIGN:
+Create a sophisticated dark-first enterprise engineering UI.
+
+Visual inspiration:
+
+* modern internal developer platforms
+* AWS console
+* Grafana
+* Backstage
+* Datadog
+* GitHub
+* Linear
+
+Do NOT copy any proprietary UI.
+
+The interface should look like something a real engineering organization could use.
+
+Use:
+
+* dark/light theme
+* responsive layout
+* collapsible sidebar
+* top navigation
+* command palette
+* breadcrumbs
+* global search
+* notifications
+* environment selector
+* service selector
+* date/time range selector
+* consistent cards
+* tables
+* charts
+* status badges
+* drawers
+* modals
+* tooltips
+* empty states
+* loading states
+* error states
+* skeleton loaders
+
+Do not overcrowd the dashboard with meaningless metrics.
+
+The UI should prioritize actionable information.
+
+==================================================
+
+1. GLOBAL APPLICATION SHELL
+   ==================================================
+
+Create:
+
+* collapsible sidebar
+* top navigation
+* global search
+* command palette
+* notifications center
+* user/profile menu
+* theme selector
+* environment selector
+* organization/project selector
+* breadcrumb navigation
+
+Sidebar sections:
+
+OVERVIEW
+
+* Command Center
+
+DELIVERY
+
+* Deployments
+* Release History
+* Pipelines
+
+APPLICATIONS
+
+* Services
+* Service Catalog
+* Dependency Map
+
+OPERATIONS
+
+* Incidents
+* Alerts
+* Runbooks
+* Change Management
+
+INFRASTRUCTURE
+
+* Environments
+* Servers
+* Containers
+* Infrastructure Map
+
+OBSERVABILITY
+
+* Metrics
+* Logs
+* Traces
+
+COST
+
+* Cloud Cost
+* Cost Optimization
+
+SECURITY
+
+* Security Findings
+* Access/Audit
+
+ANALYTICS
+
+* Engineering Metrics
+* Reliability
+* Reports
+
+==================================================
+2. COMMAND CENTER
+=================
+
+This is the main page.
+
+Do NOT make it just a server monitoring page.
+
+Show operational intelligence.
+
+Top summary:
+
+* Overall Platform Health
+* Active Incidents
+* Active Alerts
+* Deployments Today
+* Failed Deployments
+* Change Failure Rate
+* Availability
+* MTTR
+* MTBF
+* Cloud Spend
+* Services At Risk
+
+Create environment cards:
+
+QA
+UAT
+PRODUCTION
+
+Each environment should show:
+
+* health
+* current release
+* last deployment
+* deployment status
+* active incidents
+* service count
+* infrastructure status
+* availability
+
+Create an "Operational Risk" section showing things such as:
+
+* deployment failure risk
+* unhealthy services
+* expiring certificates
+* high error rate
+* abnormal latency
+* cost anomaly
+* infrastructure drift
+* unresolved incidents
+
+Create an "Activity Feed":
+
+Examples:
+
+"Deployment v2.4.1 promoted to UAT"
+"Checkout API error rate exceeded threshold"
+"Production deployment approved"
+"EC2 instance entered degraded state"
+"Incident INC-1042 resolved"
+"Cloud spend anomaly detected"
+
+Each activity should have timestamp, severity and service/environment.
+
+==================================================
+3. SERVICE CATALOG
+==================
+
+Create an internal service catalog.
+
+Each service should contain:
+
+* service name
+* owner/team
+* repository
+* language
+* version
+* environment
+* deployment status
+* availability
+* latency
+* error rate
+* dependencies
+* documentation
+* runbook
+* last deployment
+* current incident count
+* risk level
+
+Example services:
+
+* API Gateway
+* User Service
+* Authentication Service
+* Payment Service
+* Notification Service
+* Frontend
+* Database
+
+Service detail page:
+
+Overview
+Deployments
+Dependencies
+Metrics
+Logs
+Traces
+Incidents
+Changes
+Runbooks
+Ownership
+
+Include a dependency graph showing:
+
+Frontend → API Gateway → Services → Database
+
+==================================================
+4. DEPENDENCY MAP
+=================
+
+Create an interactive service dependency map.
+
+Nodes represent:
+
+* services
+* databases
+* queues
+* external APIs
+* infrastructure
+
+Edges represent dependencies.
+
+Show health on nodes.
+
+If a dependency is unhealthy, visually propagate the impact.
+
+Example:
+
+Payment Service
+↓
+Payment Gateway
+↓
+External Payment Provider
+
+If Payment Gateway fails, show:
+
+Payment Service
+↓
+DEGRADED
+
+Also show:
+
+"Potential customer impact"
+
+This should demonstrate understanding of dependency-based incident analysis.
+
+==================================================
+5. DEPLOYMENT CENTER
+====================
+
+Create a deployment management interface.
+
+Show:
+
+* application
+* version
+* branch
+* commit
+* author
+* pipeline
+* environment
+* status
+* duration
+* deployed time
+* approval status
+
+Pipeline visualization:
+
+SOURCE
+↓
+BUILD
+↓
+UNIT TEST
+↓
+SECURITY SCAN
+↓
+PACKAGE
+↓
+QA
+↓
+UAT
+↓
+APPROVAL
+↓
+PRODUCTION
+
+Show each stage with:
+
+* pending
+* running
+* success
+* failed
+* skipped
+
+Create deployment details:
+
+* commit SHA
+* commit message
+* author
+* changed files
+* test results
+* security scan
+* artifact
+* deployment logs
+* approval history
+* rollback option
+
+==================================================
+6. RELEASE HISTORY
+==================
+
+Create a release timeline.
+
+Example:
+
+v2.4.2
+QA → UAT → PROD
+
+v2.4.1
+QA → UAT
+
+v2.4.0
+PROD
+
+Show:
+
+* release frequency
+* successful deployments
+* failed deployments
+* rollback count
+* lead time
+* change failure rate
+
+==================================================
+7. INCIDENT MANAGEMENT
+======================
+
+Create a proper incident management system.
+
+Incident fields:
+
+* incident ID
+* title
+* severity
+* status
+* service
+* environment
+* detected time
+* acknowledged time
+* resolved time
+* assigned engineer
+* incident commander
+* affected services
+* customer impact
+* timeline
+
+Severity:
+
+SEV-1
+SEV-2
+SEV-3
+SEV-4
+
+Incident page should include:
+
+Timeline
+
+Detection
+Acknowledgement
+Investigation
+Mitigation
+Resolution
+
+Show related:
+
+* alerts
+* deployments
+* logs
+* traces
+* affected services
+* recent changes
+
+Create a "Possible Root Causes" section based on mock correlation.
+
+Example:
+
+"Error rate increased 4 minutes after deployment v2.4.1."
+
+==================================================
+8. ALERT CENTER
+===============
+
+Create alert management.
+
+Show:
+
+* alert name
+* severity
+* service
+* environment
+* current value
+* threshold
+* duration
+* status
+
+Support:
+
+* firing
+* acknowledged
+* resolved
+* suppressed
+
+Create alert details with:
+
+* metric graph
+* threshold
+* related deployment
+* related incident
+* suggested runbook
+
+==================================================
+9. RUNBOOKS
+===========
+
+Create a Runbook library.
+
+Examples:
+
+* High CPU
+* High memory
+* Application unavailable
+* HTTP 5xx spike
+* Database connection failure
+* Deployment failure
+* Disk full
+* Certificate expiry
+* Container crash loop
+
+Each runbook should contain:
+
+Symptoms
+Possible causes
+Diagnostic commands
+Investigation steps
+Mitigation
+Rollback
+Escalation
+Post-incident actions
+
+Do NOT actually execute shell commands.
+
+This is a documentation/workflow interface only.
+
+==================================================
+10. CHANGE MANAGEMENT
+=====================
+
+Create a Change Management page.
+
+Show:
+
+* change ID
+* service
+* requested by
+* environment
+* risk
+* planned time
+* status
+* approval
+* deployment
+
+Statuses:
+
+Draft
+Pending Approval
+Approved
+Scheduled
+Executing
+Completed
+Rejected
+Rolled Back
+
+Create change detail page.
+
+==================================================
+11. INFRASTRUCTURE
+==================
+
+Create infrastructure inventory.
+
+Environment:
+
+QA
+UAT
+PRODUCTION
+
+For each server:
+
+* hostname
+* private IP
+* public IP
+* instance type
+* OS
+* region
+* availability zone
+* status
+* uptime
+* CPU
+* memory
+* disk
+* application version
+
+Show infrastructure relationships.
+
+IMPORTANT:
+Use mock data only.
+
+Do not imply that the UI is currently connected to AWS.
+
+==================================================
+12. OBSERVABILITY
+=================
+
+Create three major views:
+
+METRICS
+LOGS
+TRACES
+
+Metrics:
+
+* request rate
+* latency
+* error rate
+* CPU
+* memory
+* disk
+* availability
+* throughput
+
+Use time-series charts.
+
+Logs:
+
+Create realistic structured logs with:
+
+timestamp
+level
+service
+environment
+request ID
+message
+
+Levels:
+
+INFO
+WARN
+ERROR
+DEBUG
+
+Add filtering.
+
+Traces:
+
+Create a simplified distributed trace visualization:
+
+User Request
+↓
+API Gateway
+↓
+Auth Service
+↓
+Payment Service
+↓
+Database
+
+Show duration for each component.
+
+==================================================
+13. CLOUD COST
+==============
+
+Create a FinOps-style cost dashboard.
+
+Show:
+
+* total monthly cost
+* daily cost
+* cost by environment
+* cost by service
+* cost trend
+* estimated monthly bill
+* budget
+* budget utilization
+
+Create anomaly cards:
+
+"Production compute spend increased 23%."
+
+"Unused resource detected."
+
+"QA environment running outside expected schedule."
+
+Show estimated savings opportunities.
+
+Use mock data.
+
+==================================================
+14. RELIABILITY / SRE DASHBOARD
+===============================
+
+Create an SRE page.
+
+Show:
+
+* SLO
+* SLA
+* SLI
+* availability
+* latency
+* error budget
+* error budget burn
+* MTTR
+* MTBF
+* incident count
+* change failure rate
+
+Create an Error Budget panel.
+
+Example:
+
+Availability SLO: 99.9%
+
+Current:
+99.94%
+
+Remaining Error Budget:
+72%
+
+Show burn-rate visualization.
+
+==================================================
+15. SECURITY CENTER
+===================
+
+Create a security overview.
+
+Show:
+
+* critical findings
+* high findings
+* medium findings
+* exposed ports
+* certificate expiry
+* dependency vulnerabilities
+* IAM findings
+* container vulnerabilities
+
+Create finding detail pages.
+
+Use mock data only.
+
+Do not perform real security scans.
+
+==================================================
+16. AUDIT LOG
+=============
+
+Create an immutable-looking audit timeline.
+
+Events:
+
+* deployment approved
+* deployment rejected
+* user login
+* configuration changed
+* incident acknowledged
+* service modified
+* environment changed
+
+Columns:
+
+Timestamp
+Actor
+Action
+Resource
+Environment
+IP
+Result
+
+Include filtering and search.
+
+==================================================
+17. ENGINEERING ANALYTICS
+=========================
+
+Create engineering KPI dashboards.
+
+Metrics:
+
+* deployment frequency
+* lead time for changes
+* change failure rate
+* mean time to recovery
+* deployment success rate
+* rollback frequency
+* incident frequency
+
+Create charts and trend indicators.
+
+Do not create employee performance rankings.
+
+Focus on system/process metrics.
+
+==================================================
+18. GLOBAL SEARCH
+=================
+
+Create powerful global search.
+
+Search across:
+
+Services
+Deployments
+Incidents
+Alerts
+Servers
+Changes
+Runbooks
+Logs
+
+Support keyboard shortcut:
+
+Ctrl + K
+
+Show grouped search results.
+
+==================================================
+19. COMMAND PALETTE
+===================
+
+Create command palette actions:
+
+Go to Command Center
+Go to Services
+Go to Deployments
+Go to Incidents
+Go to Infrastructure
+Search logs
+Create incident
+View production
+View QA
+View UAT
+
+Use keyboard shortcuts.
+
+==================================================
+20. ENVIRONMENT SWITCHING
+=========================
+
+Global environment selector:
+
+ALL
+QA
+UAT
+PRODUCTION
+
+When selecting an environment, relevant pages should update their mock data.
+
+Production should visually feel more protected than QA.
+
+For production deployment UI:
+
+Require an approval workflow simulation.
+
+Example:
+
+"Production deployment requires approval."
+
+Show:
+
+Requested by
+Approved by
+Approval timestamp
+Risk assessment
+
+This is a simulation only.
+
+==================================================
+21. DARK MODE / LIGHT MODE
+==========================
+
+Dark mode should be the default.
+
+Use an enterprise engineering aesthetic.
+
+Avoid excessive gradients.
+
+Avoid cartoon-like UI.
+
+Avoid huge decorative elements.
+
+Prioritize information density and usability.
+
+==================================================
+22. MOCK DATA ARCHITECTURE
+==========================
+
+Create a clean mock data layer.
+
+For example:
+
+src/
+data/
+services/
+api/
+types/
+
+Do NOT hardcode mock data directly inside UI components.
+
+Create interfaces such as:
+
+Environment
+Service
+Deployment
+Incident
+Alert
+Server
+Metric
+LogEntry
+Trace
+Change
+Runbook
+CostRecord
+AuditEvent
+
+Create provider functions such as:
+
+getEnvironments()
+getServices()
+getDeployments()
+getIncidents()
+getAlerts()
+getServers()
+getMetrics()
+getLogs()
+getTraces()
+getCosts()
+getAuditEvents()
+
+The UI should consume these provider functions.
+
+Later these providers will be replaced by real APIs.
+
+==================================================
+23. API-READY ARCHITECTURE
+==========================
+
+Create an abstraction like:
+
+DataProvider
+
+with:
+
+MockDataProvider
+
+and document how future providers could be added:
+
+AWSDataProvider
+JenkinsDataProvider
+GitHubDataProvider
+PrometheusDataProvider
+CloudWatchDataProvider
+
+Do not implement real AWS integrations yet.
+
+==================================================
+24. REALISTIC DEMO DATA
+=======================
+
+Create enough mock data to make the dashboard look alive.
+
+At minimum:
+
+10 services
+3 environments
+15 deployments
+8 incidents
+20 alerts
+15 servers
+100+ logs
+multiple traces
+30 audit events
+12 cost records
+10 runbooks
+10 change requests
+
+Include different states:
+
+healthy
+warning
+degraded
+failed
+deploying
+pending
+resolved
+
+Avoid obviously fake placeholder text such as:
+
+"Lorem ipsum"
+"Test Service"
+"Example Server"
+
+Use realistic engineering names.
+
+==================================================
+25. INTERACTIONS
+================
+
+The dashboard must feel functional.
+
+Implement:
+
+* filtering
+* sorting
+* searching
+* pagination
+* tabs
+* environment switching
+* service selection
+* time range selection
+* expandable rows
+* drawers
+* modal dialogs
+* toast notifications
+* simulated deployment status changes
+* simulated incident acknowledgement
+* simulated alert resolution
+* simulated approval workflows
+
+These are frontend simulations only.
+
+==================================================
+26. RESPONSIVENESS
+==================
+
+The application must work on:
+
+desktop
+tablet
+mobile
+
+Do not simply shrink desktop UI.
+
+Create responsive layouts.
+
+==================================================
+27. ACCESSIBILITY
+=================
+
+Include:
+
+* keyboard navigation
+* accessible buttons
+* proper labels
+* semantic HTML
+* visible focus states
+* sufficient contrast
+* ARIA labels where required
+
+==================================================
+28. CODE QUALITY
+================
+
+Use:
+
+* reusable components
+* typed interfaces
+* modular pages
+* hooks
+* utility functions
+* clear naming
+* no duplicated UI logic
+* no giant monolithic components
+
+Add comments only where they provide useful architectural context.
+
+==================================================
+29. PROJECT DOCUMENTATION
+=========================
+
+Generate a comprehensive README.md containing:
+
+Project overview
+Architecture
+Technology stack
+Feature list
+Folder structure
+Local setup
+Development commands
+Build commands
+Environment variables
+Mock data architecture
+Future AWS integration plan
+Future Jenkins integration plan
+Future monitoring integration plan
+Future deployment architecture
+
+Include a Mermaid architecture diagram.
+
+==================================================
+30. FUTURE DEVOPS ARCHITECTURE
+==============================
+
+Document a future architecture:
+
+Developer
+↓
+GitHub
+↓
+Jenkins
+↓
+Build
+↓
+Unit Tests
+↓
+Security Scan
+↓
+Docker Build
+↓
+Container Registry
+↓
+QA EC2
+↓
+UAT EC2
+↓
+Approval
+↓
+Production EC2
+↓
+Nginx
+↓
+CloudOps Command Center
+
+Also document future observability:
+
+Application
+↓
+Prometheus / CloudWatch
+↓
+Metrics
+
+Application
+↓
+Logs
+↓
+Centralized logging
+
+Application
+↓
+Tracing
+↓
+Distributed tracing
+
+==================================================
+31. IMPORTANT SECURITY RULES
+============================
+
+Never put:
+
+* AWS access keys
+* AWS secret keys
+* GitHub tokens
+* Jenkins credentials
+* passwords
+* private keys
+
+inside the repository.
+
+Use environment variables for future integrations.
+
+Provide `.env.example`.
+
+==================================================
+32. IMPORTANT PORTFOLIO REQUIREMENT
+===================================
+
+The application should visually communicate that this is an engineering platform rather than a simple monitoring dashboard.
+
+The main differentiators should be:
+
+1. Service catalog
+2. Dependency intelligence
+3. Deployment intelligence
+4. Incident management
+5. Change management
+6. Runbooks
+7. Observability
+8. SRE/error-budget view
+9. FinOps/cost intelligence
+10. Security posture
+11. Audit trail
+12. Engineering analytics
+13. Environment-aware workflows
+14. API-ready architecture
+
+Do not claim that any real AWS/Jenkins/Prometheus integration exists yet.
+
+==================================================
+FINAL REQUIREMENT
+=================
+
+Generate the complete working source code.
+
+The project must run locally with a simple documented command such as:
+
+npm install
+npm run dev
+
+Make sure there are no broken imports, missing components, missing routes or placeholder screens.
+
+Every sidebar item must lead to a functional page populated with realistic mock data.
+
+Do not deploy the project.
+
+Do not host the project.
+
+Do not provision cloud resources.
+
+Return the complete project source code and README so that I can download/open it in VS Code and continue the DevOps implementation myself.

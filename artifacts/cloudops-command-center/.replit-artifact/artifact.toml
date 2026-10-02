@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CloudOps Command Center"
+description = "An internal DevOps and CloudOps platform for engineering teams to understand service health, deployments, incidents, infrastructure, risk, observability, reliability, cost, and security through realistic local demo data."
+version = "1.0.0"
+id = "artifacts/cloudops-command-center"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20165
+
+[services.development]
+run = "pnpm --filter @workspace/cloudops-command-center run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cloudops-command-center", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/cloudops-command-center/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20165"
+BASE_PATH = "/"
